@@ -1,4 +1,4 @@
-# Painless file upload with AngularJS and Django REST
+# Painless file upload w/ AngularJS and Django REST
 
 A common pattern when creating an application from scratch in Angular and Django is when there's a need for a form with any file upload. Let's say profile edition with avatar upload or an gallery with multiple file upload. Angular does not provide support for file upload by default. Developers over internet suggest many different solutions, but personally none of them cover the issue completely and painless.
 
@@ -37,6 +37,11 @@ This will simply provide an endpoint for uploading images with some extra ```nam
 Second, we will create a form with a file input, controller and resource service.
 
 ```html
+<p ng-if="newFoo">
+    Uploaded foo image named "{{ newFoo.name }}":
+    <img ng-src="{{ newFoo.image}}" />
+</p>
+
 <form ng-controller="UploadFormController" ng-submit="submit(form)">
     <input type="file" ng-model="form.image" />
     <input type="text" ng-model="form.name" />
@@ -45,14 +50,14 @@ Second, we will create a form with a file input, controller and resource service
 ```
 ```coffeescript
 angular.module 'application'
-  .controller 'UploadFormController', (Profile) ->
-    $scope.submit = (profile) ->
-        Profile.update(profile).then (new_profile) ->
-            console.log new_profile
+  .controller 'UploadFormController', (Foo) ->
+    $scope.submit = (foo) ->
+        Foo.update(foo).then (newFoo) ->
+            $scope.newFoo = newFoo
 ```
 ```coffeescript
 angular.module 'application'
-  .service 'Profile', ($resource) ->
+  .service 'Foo', ($resource) ->
     
     @resource = $resource 'http://endpoint/url/', null
         update:
@@ -61,7 +66,11 @@ angular.module 'application'
             headers:
                 'Content-Type': undefined
                 
-    @update = (profile) ->
+    @update = (foo) ->
         formData = new FormData()
+        formData.append key, foo[key] for key in Object.keys profile
         
+        return @resource.update(foo).$promise
+        
+    @
 ```
