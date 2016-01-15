@@ -1,6 +1,6 @@
 # Painless file upload w/ AngularJS and Django REST
 
-A common pattern when creating an application from scratch in Angular and Django is when there's a need for a form with any file upload. Let's say profile edition with avatar upload or an gallery with multiple file upload. Angular does not provide support for file upload by default. Developers over internet suggest many different solutions, but personally none of them cover the issue completely and painless.
+A common pattern when creating an application from scratch in Angular and Django is when there's a need of a form with any file upload. Let's say profile edition with avatar upload or an gallery with multiple file upload. Angular does not provide support for file upload by default. Developers over internet suggest many different solutions, but personally none of them cover the issue completely and painless.
 
 ### Endpoint setup
 
