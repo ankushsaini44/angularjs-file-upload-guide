@@ -85,5 +85,5 @@ angular.module 'fu'
           'Content-Type': undefined
 ```
 
-## That's it!
+## That's it! That simple.
 Questions? Feel free to leave a review or ask questions.
