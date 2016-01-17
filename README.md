@@ -71,7 +71,7 @@ angular.module 'application'
 ```
 ```coffeescript
 angular.module 'fu'
-  .service 'Foo', ($resource) ->
+  .factory 'Foo', ($resource) ->
     
     return $resource 'http://endpoint/', null,
       update:
