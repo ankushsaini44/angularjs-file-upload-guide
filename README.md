@@ -57,9 +57,8 @@ angular.module 'application'
   .controller 'UploadFormController', (Foo) ->
     $scope.form = {}
 
-    $scope.submit = (foo) ->
-        Foo.update(foo).then (newFoo) ->
-            $scope.newFoo = newFoo
+    $scope.submit = (foo) -> 
+        $scope.newFoo = Foo.update(foo)
 
     $scope.updateImage = (imageField) ->
       reader = new FileReader()
@@ -85,5 +84,5 @@ angular.module 'fu'
           'Content-Type': undefined
 ```
 
-## That's it! That simple.
+## This is it! That simple.
 Questions? Feel free to leave a review or ask questions.
