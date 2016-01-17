@@ -1,10 +1,10 @@
-# Note on painless file upload in AngularJS and Django REST applications
+# Notes on painless file uploads in AngularJS with Django REST applications.
 
-A common pattern when creating an application from scratch using AngularJS and Django is when there's a need of a form with any file upload feature. Let's say profile edition with avatar upload or an gallery with multiple file upload with extra preview for better UX. Angular does not provide support for file upload by default. Developers over internet created few guidelines with preferable solutions, but personally none of them explaining the issue completely.
+When creating an application from scratch using Angular with Django we usuall need a form with a file upload feature. Let's say, profile edit with avatar upload or a gallery with multiple file uploads with extra preview for better UX. Angular does not provide support for file upload by default. Developers over the Internet created few guidelines with preferable solutions, but in my opinion none explain the issue completely.
 
 ### Endpoint setup
 
-First, lets create sample Django REST application - model, serializer and view.
+First, let's create a sample Django REST application - model, serializer and view.
 
 ```python
 # models.py
@@ -28,13 +28,13 @@ class FooCreateView(CreateViewAPI):
     serializer_class = FooSerializer
 ```
 
-This will simply provide an endpoint for uploading images with some extra ```name``` parameter to the server. As you can see ```MultipartParser``` is being used in the view additionaly.
+This will simply provide an endpoint for uploading images with some extra ```name``` parameter to the server. As you can see ```MultipartParser``` is also used in the view.
 
-> ```MultipartParser``` is a parser for multipart form data, which may include file data. It parses the incoming bytestream as a multipart encoded form, and returns a DataAndFiles object.
+> ```MultipartParser``` is a parser for multipart form data which may include some file data. It parses the incoming bytestream as a multipart encoded form and returns a DataAndFiles object.
 
 ## Angular project setup
 
-Second, we will create a form with a file input, controller and resource service.
+Second, we will create a form with a file input, controller and a resource service.
 
 ```html
 <p ng-if="newFoo">
@@ -87,4 +87,4 @@ angular.module 'fu'
 ## This is it! That simple.
 **No external packages. No tons of code. No pain.**
 
-Questions? Feel free to leave a review or ask questions.
+Questions? Feel free to leave a review or ask.
