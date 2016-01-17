@@ -71,21 +71,18 @@ angular.module 'application'
     return @
 ```
 ```coffeescript
-angular.module 'application'
+angular.module 'fu'
   .service 'Foo', ($resource) ->
-    resource = $resource 'http://endpoint/url/', null,
+    
+    return $resource 'http://endpoint/', null,
       update:
         method: 'POST'
-        transformRequest: angular.identity
+        transformRequest: (data) ->
+          formData = new FormData()
+          formData.append key, data[key] for key in Object.keys data
+          return formData
         headers:
           'Content-Type': undefined
-
-    @update = (foo) ->
-      formData = new FormData()
-      formData.append key, foo[key] for key in Object.keys foo
-      return resource.update(formData).$promise
-
-    return @
 ```
 
 ## That's it!
