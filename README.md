@@ -34,7 +34,7 @@ This will simply provide an endpoint for uploading images with some extra ```nam
 
 ## Angular project setup
 
-Second, we will create a form with a file input, controller and a resource service.
+Second, we will create a form with a file input, controller and a resource factory.
 
 ```html
 <p ng-if="newFoo">
